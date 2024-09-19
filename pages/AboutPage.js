@@ -6,27 +6,46 @@ import {
   Image,
   ScrollView,
   Button,
+  Dimensions,
 } from "react-native";
 
 export default function AboutPage({ navigation }) {
+  const { width } = Dimensions.get("window");
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
+       
+          <View style={{ marginBottom:10 }}>
+
+            <Button
+                title="List Page"
+                onPress={() => navigation.navigate("List")}
+              ></Button>
+          </View>
+          
           <Button
             title="Home Page"
             onPress={() => navigation.navigate("Home")}
           ></Button>
           <Image
-            source={require("../assets/dog.png")}
+            source={{ uri: `https://picsum.photos/200/300?a=${Math.random()}` }}
             style={{
+              
               borderColor: "#eee",
               borderWidth: 5,
-              width: 300,
+              width: width,
               height: 400,
+              justifyContent: "center",
+              alignItems: "center",
+             
             }}
           />
-          <Text>
+          <Text
+            style={ { color:"#fff" }}
+             
+            
+          >
             Lorem Ipsum: Lorem ipsum dolor sit amet, consectetur adipiscing
             elit, sed do eiusmod tempor incididunt ut labore et dolore magna
             aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -78,9 +97,9 @@ export default function AboutPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // paddingTop: 48,
+    backgroundColor: "#000",
+     alignItems: "center",
+    
+    
   },
 });

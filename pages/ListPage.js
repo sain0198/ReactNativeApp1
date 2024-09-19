@@ -6,7 +6,10 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
+  Image
 } from "react-native";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function ListPage({ navigation }) {
   return (
@@ -14,16 +17,45 @@ export default function ListPage({ navigation }) {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <Text
+          <View>
+            <Pressable
+              style={{
+                padding: 16,
+                backgroundColor: "#000",
+                paddingVertical: 16,
+                marginBottom: 2,
+              
+              }}
+              onPress={() => navigation.navigate("About")}
+            >
+              <Text
+              style={{
+                padding: 16,
+                fontSize: 20,
+                margin: 2,
+                color: "#fff",
+              }}
+            >
+              Go visit detail for {item.title}
+            </Text>
+            <View
+              style={{
+                flex: 1,
+                alignItems: "center",
+              }}
+            >
+            <Image
+            source={{ uri: `https://picsum.photos/200/300?a=${Math.random()}` }}
             style={{
-              padding: 16,
-              fontSize: 20,
-              backgroundColor: "aqua",
-              margin: 2,
+              borderColor: "#eee",
+              borderWidth: 5,
+              width: 150,
+              height: 150,
             }}
-          >
-            {item.title}
-          </Text>
+          />
+          </View>
+            </Pressable>
+          </View>
         )}
         keyExtractor={(item) => item.id}
       />
@@ -121,8 +153,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    // alignItems: "center",
+    alignItems: "center",
     justifyContent: "center",
-    // paddingTop: 48,
+   
   },
 });
